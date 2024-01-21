@@ -14,7 +14,7 @@ let candidateAnswer = "";
 //TODO: Variables for Part 2
 let questions = ["Who was the first American woman in space? ", "True or false: 5 kilometer == 5000 meters? ", "(5 + 3)/2 * 10 = ? ", "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ", "What is the minimum crew size for the ISS? "];
 let correctAnswers = ["Sally Ride", "true", "40", "Trajectory", "3"];
-let candidateAnswers = [];
+let candidateAnswers = [""];
 
 
 function askForName() {
@@ -34,7 +34,7 @@ function gradeQuiz(candidateAnswers) {
   let count = 0
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
   for (let i = 0; i < questions.length; i++) {
-    if (candidateAnswer == correctAnswer) {
+    if (candidateAnswers[i].toLowerCase() == correctAnswers[i].toLowerCase()) {
       console.log("correct")
       count += 1
     } else {
@@ -42,7 +42,16 @@ function gradeQuiz(candidateAnswers) {
     }
   }
 
-  let grade = count / questions.length;  //TODO 3.2 use this variable to calculate the candidates score.
+  //TODO 3.2 use this variable to calculate the candidates score.
+  console.log("Must answer at least 80% of questions correcntly to pass.");
+  let grade = (100 * count / questions.length);
+  console.log(grade)
+  if (grade >= 80) {
+    console.log("You passed! Congrats!");
+
+  } else {
+    console.log("Sorry, you failed. Try again.")
+  }
 
 
   return grade;
